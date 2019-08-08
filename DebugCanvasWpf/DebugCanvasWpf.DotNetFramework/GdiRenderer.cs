@@ -119,10 +119,11 @@ namespace DebugCanvasWpf.DotNetFramework
             return new SizeF(Math.Abs(origin.X - size.X), Math.Abs(origin.Y - size.Y));
         }
 
+        private StringFormat _centerFormat = new StringFormat() { Alignment = StringAlignment.Center };
         private void DrawText(string text, Font font, Brush brush, PointF topLeft, SizeF size)
         {
             var rect = new RectangleF(topLeft, size);
-            GdiGraphics.DrawString(text, font, brush, rect);
+            GdiGraphics.DrawString(text, font, brush, rect, _centerFormat);
         }
 
         private void FillRectangle(System.Drawing.Brush brush, System.Drawing.RectangleF rect) => GdiGraphics.FillRectangle(brush, rect);
