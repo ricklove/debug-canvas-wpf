@@ -130,7 +130,7 @@ namespace DebugCanvasWpf.DotNetFramework
             var mDelta = m - _oldMouseWorldPosition;
 
             var w = WorldBounds;
-            w.Offset(-mDelta);
+            w = w.Offset(-mDelta);
             WorldBounds = w;
             Render();
 
@@ -143,12 +143,20 @@ namespace DebugCanvasWpf.DotNetFramework
 
             var m = GetMouseWorldPosition(sender, e);
             var w = WorldBounds;
-            w.Offset(-m);
+            w = w.Offset(-m);
 
-            if (d > 0) { w.Scale(1.1f); e.Handled = true; }
-            else { w.Scale(1 / 1.1f); e.Handled = true; }
+            if (d > 0) { w = w.Scale(1 / 1.1f); e.Handled = true; }
+            else { w = w.Scale(1.1f); e.Handled = true; }
 
-            w.Offset(m);
+            w = w.Offset(m);
+
+
+            if (w.Height < 0 || w.Width < 0)
+            {
+                var breakdance = true;
+            }
+
+
             WorldBounds = w;
             Render();
         }
@@ -163,11 +171,12 @@ namespace DebugCanvasWpf.DotNetFramework
 
     internal static class Rect_Ext
     {
-        public static void Offset(this ref System.Drawing.RectangleF rect, Vector2 offset) => rect.Offset(offset.X, offset.Y);
-        public static void Scale(this ref System.Drawing.RectangleF rect, float scale)
+        public static System.Drawing.RectangleF Offset(this System.Drawing.RectangleF rect, Vector2 offset) { rect.Offset(offset.X, offset.Y); return rect; }
+        public static System.Drawing.RectangleF Scale(this System.Drawing.RectangleF rect, float scale)
         {
-            var size = new Vector2(rect.X * scale, rect.Y * scale);
-            rect.Inflate(size.X - rect.X, size.Y - rect.Y);
+            var size = new Vector2(rect.Width * scale, rect.Height * scale);
+            rect.Inflate(size.X - rect.Width, size.Y - rect.Height);
+            return rect;
         }
     }
 }

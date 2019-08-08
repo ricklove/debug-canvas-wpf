@@ -35,12 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DebugCanvasWpf.DotNetFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DebugCanvasWpf.DotNetFramework.1.0.0\lib\net472\DebugCanvasWpf.DotNetFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="DebugCanvasWpf.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DebugCanvasWpf.DotNetFramework.1.0.0\lib\net472\DebugCanvasWpf.Library.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -110,6 +104,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DebugCanvasWpf.DotNetFramework\DebugCanvasWpf.DotNetFramework.csproj">
+      <Project>{4fcff0fc-e84f-435c-b411-71942e2c9982}</Project>
+      <Name>DebugCanvasWpf.DotNetFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DebugCanvasWpf.Library\DebugCanvasWpf.Library.csproj">
+      <Project>{c0f37167-70cd-4088-b121-0992093c0751}</Project>
+      <Name>DebugCanvasWpf.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
