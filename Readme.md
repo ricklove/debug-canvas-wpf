@@ -4,6 +4,12 @@
 
 A fast drawing canvas for debugging visualizations using GDI+ as a WPF component
 
+## Features
+
+- Simple Visualization elements: lines, boxes, x, text
+- Fast Drawing of many elements (easily draw thousands of lines)
+- Infinite Zoom and Mouse Dragging
+
 ## Sample Usage
 
 - Add to xaml:
