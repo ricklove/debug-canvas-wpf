@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugCanvasWpf.DotNetFramew
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugCanvasWpf.DotNetFramework.SampleApp", "DebugCanvasWpf.DotNetFramework.SampleApp\DebugCanvasWpf.DotNetFramework.SampleApp.csproj", "{F499F015-F990-4E90-9B76-CB00E7DDE85E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{6ED73549-3965-4078-9165-CFF9955E3CE1}"
+	ProjectSection(SolutionItems) = preProject
+		..\NugetPublishing.md = ..\NugetPublishing.md
+		..\Readme.md = ..\Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{5E7D80C4-01F8-4279-864A-1A4C63742AAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F499F015-F990-4E90-9B76-CB00E7DDE85E} = {5E7D80C4-01F8-4279-864A-1A4C63742AAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F112CF92-5515-475A-98AD-389A5767CB3B}

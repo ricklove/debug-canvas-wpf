@@ -2,11 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Rick Love</Authors>
+    <Company>Rick Love</Company>
+    <Copyright>Copyright © Rick Love 2019</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
-    <PackageReference Include="System.Numerics.Vectors" Version="4.6.0-preview5.19224.8" />
+    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
   </ItemGroup>
 
 </Project>

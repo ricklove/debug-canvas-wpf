@@ -8,11 +8,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DebugCanvasWpf.DotNetFramework")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A fast drawing canvas for debugging visualizations using GDI+ as a WPF component")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Rick Love")]
 [assembly: AssemblyProduct("DebugCanvasWpf.DotNetFramework")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2019")]
+[assembly: AssemblyCopyright("Copyright © Rick Love 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
