@@ -75,6 +75,7 @@ namespace DebugCanvasWpf.DotNetFramework
 
         private void imgMain_SizeChanged(object sender, SizeChangedEventArgs e) => Render();
 
+        public event EventHandler WorldBoundsChanged;
         public System.Drawing.RectangleF WorldBounds
         {
             get
@@ -84,6 +85,7 @@ namespace DebugCanvasWpf.DotNetFramework
             set
             {
                 DrawingData.ScreenWorldBounds = value;
+                WorldBoundsChanged?.Invoke(this, new EventArgs());
             }
         }
 
