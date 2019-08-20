@@ -174,14 +174,21 @@ namespace DebugCanvasWpf.DotNetFramework
                 ((float)(point.Y - ImageHeight) / -scale) + offsetY);
         }
 
-        private readonly Dictionary<double, Font> fonts = new Dictionary<double, Font>();
+        private string _fontFamilyName;
+        private readonly Dictionary<double, Font> _fonts = new Dictionary<double, Font>();
         private Font GetFont(double fontSize)
         {
-            if (!fonts.ContainsKey(fontSize))
+            if (_fontFamilyName != _data.FontFamilyName)
             {
-                fonts.Add(fontSize, new Font("Simplex", (float)fontSize));
+                _fontFamilyName = _data.FontFamilyName;
+                _fonts.Clear();
             }
-            return fonts[fontSize];
+
+            if (!_fonts.ContainsKey(fontSize))
+            {
+                _fonts.Add(fontSize, new Font(_fontFamilyName, (float)fontSize));
+            }
+            return _fonts[fontSize];
         }
 
         private readonly Dictionary<Color, Brush> brushes = new Dictionary<Color, Brush>();

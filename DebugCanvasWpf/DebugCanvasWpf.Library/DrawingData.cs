@@ -130,7 +130,7 @@ namespace DebugCanvasWpf.Library
             DrawBox_Calls.Add(new DrawBoxInfo() { Center = center, Color = color, Size = size, ShouldFill = shouldFill });
         }
 
-
+        public string FontFamilyName { get; set; }
         public struct TextInfo
         {
             public string Text { get; set; }
