@@ -72,6 +72,33 @@ namespace DebugCanvasWpf.DotNetFramework
                 //DrawLine(GetPen((call.Color), 1), GetPoint(call.Center + new Vector2(-call.Size * 0.5f, call.Size * 0.5f)), GetPoint(call.Center + new Vector2(-call.Size * 0.5f, -call.Size * 0.5f)));
             }
 
+            foreach (var call in data.DrawEllipse_Calls.ToList())
+            {
+                if (!IsInBounds(call.Center, call.Size)) { continue; }
+                var tl = GetPoint(call.Center + new Vector2(-call.Size.X * 0.5f, -call.Size.Y * 0.5f));
+                var br = GetPoint(call.Center + new Vector2(call.Size.X * 0.5f, call.Size.Y * 0.5f));
+                var pad = 0.5f;
+                var x = Math.Min(tl.X, br.X) - pad;
+                var y = Math.Min(tl.Y, br.Y) - pad;
+                var w = Math.Abs(br.X - tl.X) + pad * 2;
+                var h = Math.Abs(br.Y - tl.Y) + pad * 2;
+
+                if (call.ShouldFill)
+                {
+                    FillEllipse(GetBrush(call.Color), new RectangleF(x, y, w, h));
+                }
+                else
+                {
+                    DrawEllipse(GetPen(call.Color, 1), new RectangleF(x, y, w, h));
+                }
+
+                // DrawRectangle(GetPen(Color.black, 1), new Rectangle(x, y, w, h));
+                //DrawLine(GetPen((call.Color), 1), GetPoint(call.Center + new Vector2(-call.Size * 0.5f, -call.Size * 0.5f)), GetPoint(call.Center + new Vector2(call.Size * 0.5f, -call.Size * 0.5f)));
+                //DrawLine(GetPen((call.Color), 1), GetPoint(call.Center + new Vector2(call.Size * 0.5f, -call.Size * 0.5f)), GetPoint(call.Center + new Vector2(call.Size * 0.5f, call.Size * 0.5f)));
+                //DrawLine(GetPen((call.Color), 1), GetPoint(call.Center + new Vector2(call.Size * 0.5f, call.Size * 0.5f)), GetPoint(call.Center + new Vector2(-call.Size * 0.5f, call.Size * 0.5f)));
+                //DrawLine(GetPen((call.Color), 1), GetPoint(call.Center + new Vector2(-call.Size * 0.5f, call.Size * 0.5f)), GetPoint(call.Center + new Vector2(-call.Size * 0.5f, -call.Size * 0.5f)));
+            }
+
             foreach (var call in data.DrawX_Calls.ToList())
             {
                 if (!IsInBounds(call.Center, call.Size)) { continue; }
@@ -126,10 +153,10 @@ namespace DebugCanvasWpf.DotNetFramework
             GdiGraphics.DrawString(text, font, brush, rect, _centerFormat);
         }
 
+        private void FillEllipse(System.Drawing.Brush brush, System.Drawing.RectangleF rect) => GdiGraphics.FillEllipse(brush, rect);
+        private void DrawEllipse(System.Drawing.Pen pen, System.Drawing.RectangleF rect) => GdiGraphics.DrawEllipse(pen, System.Drawing.Rectangle.Round(rect));
         private void FillRectangle(System.Drawing.Brush brush, System.Drawing.RectangleF rect) => GdiGraphics.FillRectangle(brush, rect);
-
         private void DrawRectangle(System.Drawing.Pen pen, System.Drawing.RectangleF rect) => GdiGraphics.DrawRectangle(pen, System.Drawing.Rectangle.Round(rect));
-
         private void DrawLine(Pen pen, System.Drawing.Point a, System.Drawing.Point b) => GdiGraphics.DrawLine(pen, a, b);
 
         private bool IsInBounds(Vector2 center, Vector2 size)

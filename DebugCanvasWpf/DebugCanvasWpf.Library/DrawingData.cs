@@ -19,6 +19,7 @@ namespace DebugCanvasWpf.Library
                 _screenWorldBounds = _screenWorldBounds,
                 IsEnabled = IsEnabled,
                 DrawBox_Calls = DrawBox_Calls.ToList(),
+                DrawEllipse_Calls = DrawBox_Calls.ToList(),
                 DrawLine_Calls = DrawLine_Calls.ToList(),
                 DrawText_Calls = DrawText_Calls.ToList(),
                 DrawX_Calls = DrawX_Calls.ToList(),
@@ -30,6 +31,7 @@ namespace DebugCanvasWpf.Library
         {
             DrawLine_Calls.Clear();
             DrawBox_Calls.Clear();
+            DrawEllipse_Calls.Clear();
             DrawX_Calls.Clear();
             DrawText_Calls.Clear();
         }
@@ -58,6 +60,8 @@ namespace DebugCanvasWpf.Library
             var allPoints =
                 DrawBox_Calls.Select(x => x.Center - x.Size)
                 .Concat(DrawBox_Calls.Select(x => x.Center + x.Size))
+                .Concat(DrawEllipse_Calls.Select(x => x.Center - x.Size))
+                .Concat(DrawEllipse_Calls.Select(x => x.Center + x.Size))
                 .Concat(DrawLine_Calls.Select(x => x.A))
                 .Concat(DrawLine_Calls.Select(x => x.B))
                 .Concat(DrawX_Calls.Select(x => x.Center - x.Size))
@@ -128,6 +132,20 @@ namespace DebugCanvasWpf.Library
         {
             if (!IsEnabled) { return; }
             DrawBox_Calls.Add(new DrawBoxInfo() { Center = center, Color = color, Size = size, ShouldFill = shouldFill });
+        }
+
+        public List<DrawBoxInfo> DrawEllipse_Calls = new List<DrawBoxInfo>();
+
+        public void DrawEllipse(Vector2 center, Color color, float size = 1, bool shouldFill = true)
+        {
+            if (!IsEnabled) { return; }
+            DrawEllipse_Calls.Add(new DrawBoxInfo() { Center = center, Color = color, Size = new Vector2(size, size), ShouldFill = shouldFill });
+        }
+
+        public void DrawEllipse(Vector2 center, Color color, Vector2 size, bool shouldFill = true)
+        {
+            if (!IsEnabled) { return; }
+            DrawEllipse_Calls.Add(new DrawBoxInfo() { Center = center, Color = color, Size = size, ShouldFill = shouldFill });
         }
 
         public string FontFamilyName { get; set; }

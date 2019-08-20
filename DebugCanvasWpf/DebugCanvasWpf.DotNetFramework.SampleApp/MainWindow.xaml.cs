@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace DebugCanvasWpf.DotNetFramework.SampleApp
@@ -44,7 +32,8 @@ namespace DebugCanvasWpf.DotNetFramework.SampleApp
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             var d = compDebugCanvas.DrawingData;
-            d.DrawBox(new Vector2(10, 10), System.Drawing.Color.Red, new Vector2(100, 100), false);
+            d.DrawBox(new Vector2(10, 10), System.Drawing.Color.Red, new Vector2(100, 50), false);
+            d.DrawEllipse(new Vector2(10, 10), System.Drawing.Color.Cyan, new Vector2(200, 100), false);
             d.DrawLine(new Vector2(10, 10), new Vector2(1000, 1000), System.Drawing.Color.Blue);
             d.DrawText("Hello World!", new Vector2(20, 20), System.Drawing.Color.Yellow, new Vector2(200, 20), 16, shadow: System.Drawing.Color.Blue);
 
